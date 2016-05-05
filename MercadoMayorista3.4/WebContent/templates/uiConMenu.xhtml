@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+
+	<h:head>
+        <f:facet name="first">
+			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+			<title>Mercado Mayorista</title>
+        </f:facet>
+        <link type="text/css" href="#{request.contextPath}/css/vendor/all.css" rel="stylesheet" />
+		<link type="text/css" href="#{request.contextPath}/css/app/app.css" rel="stylesheet" />
+
+		<ui:insert name="head"></ui:insert>
+	</h:head>
+
+	<h:body>
+		<div class="st-container">
+		
+		    <!-- Fixed navbar -->
+		    <div class="navbar navbar-main navbar-primary navbar-fixed-top" role="navigation">
+		      <div class="container">
+		        <div class="navbar-header">
+		          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </button>
+		          <a class="navbar-brand" href="#{request.contextPath}/ui/principal.jsf">Mercado Mayorista</a>
+		        </div>
+		        <div class="collapse navbar-collapse" id="main-nav">
+		          
+		          
+		          <ul class="nav navbar-nav">
+		            <li><a href="#{request.contextPath}/ui/principal.jsf"><i class="fa fa-home"></i> Inicio</a></li>
+		            <li class="dropdown">
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cogs"></i> Configuracion <span class="caret"></span></a>
+		              <ul class="dropdown-menu" role="menu">
+		                <li class="dropdown-header">Socio</li>
+		                <li><a href="#{request.contextPath}/ui/listaSocio.jsf">Socio Info</a></li>
+		                <li><a href="#{request.contextPath}/ui/registroUsuario.jsf">Cambiar clave</a></li>
+		                <li><a href="#{request.contextPath}/ui/listaEstablecimientos.jsf">Mis Establecimientos</a></li>
+		                <li><a href="#{request.contextPath}/ui/listaPagos.jsf">Mis Pagos</a></li>
+		                <li class="dropdown-header">Mantenimientos</li>
+		                <li><a href="#{request.contextPath}/ui/registroSocio.jsf">Registrar Socio</a></li>
+		                <li><a href="#{request.contextPath}/ui/registroPago">Registrar Pagos</a></li>
+		                <li><a href="#{request.contextPath}/ui/listaSocio.jsf">Lista Socios</a></li>
+		                <li><a href="#{request.contextPath}/ui/registroFirma.jsf">Registrar Firma</a></li>
+		                 <li><a href="#{request.contextPath}/ui/registroHuella.jsf">Registrar Huella</a></li>
+		              </ul>
+		            </li>
+		          </ul>
+		          
+		          
+		          <ul class="nav navbar-nav  navbar-right ">
+		            <li class="dropdown">
+		              <a href="#" class="dropdown-toggle user" data-toggle="dropdown">
+		                <img src="#{request.contextPath}/images/people/110/guy-5.jpg" alt="Sthefany" class="img-circle" width="40" /> Sthefany <span class="caret"></span>
+		              </a>
+		              <ul class="dropdown-menu" role="menu">
+		                <li><a href="user-private-profile.html"><i class="fa fa-user-secret"></i> Mi perfil</a></li>
+		                <li><a href="#{request.contextPath}/ui/login.jsf" ><i class="fa fa-sign-out"></i> Salir</a></li>
+		              </ul>
+		            </li>
+		
+		          </ul>
+		        </div>
+		        <!-- /.navbar-collapse -->
+		      </div>
+		    </div>
+		
+			<div class="st-pusher" id="content">
+				<div class="st-content">
+					<div class="st-content-inner">
+						<div class="container">
+							<ui:insert name="content">...</ui:insert>
+						</div>	
+					</div>
+				</div>
+			</div>
+			
+		    <!-- Footer -->
+		    <footer class="footer">
+		      <strong>Mercado Mayorista</strong> v1.0.0 &copy; Copyright 2015
+		    </footer>
+		    <!-- // Footer -->
+			
+		</div>
+		
+		<script src="#{request.contextPath}/js/vendor/all.js"></script>
+		<script src="#{request.contextPath}/js/app/app.js"></script>
+		
+	</h:body>
+	
+</f:view>
+</html>

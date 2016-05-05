@@ -1,0 +1,92 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/uiConMenu.xhtml">
+
+
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="content">
+		<div class="page-section">
+			<div class="row">
+				<div class="col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
+					<h4 class="page-section-heading">Registro de Usuario</h4>
+					<p:messages id="msgs" />
+					<div class="panel panel-default">
+						<div class="panel-body">
+
+							<h:form enctype="multipart/form-data">
+
+								<div class="form-group form-control-default required">
+									<label for="id">Id</label>
+									<h:inputText value="#{usuarioAction.usuario.id}"
+										class="form-control" id="id" placeholder="ID" required="true"
+										requiredMessage="Ingrese Id" />
+								</div>
+
+								<div class="form-group form-control-default required">
+									<label for="nombre">Nombre</label>
+									<h:inputText value="#{usuarioAction.usuario.nombre}"
+										class="form-control" id="nombre" placeholder="Nombre"
+										required="true" requiredMessage="Ingrese Nombre" />
+								</div>
+
+
+								<div class="form-group form-control-default required">
+									<label for="id">Rol</label>
+									<h:inputText value="#{usuarioAction.usuario.rol}"
+										class="form-control" id="rol" placeholder="Rol"
+										required="true" requiredMessage="Ingrese Rol" />
+								</div>
+
+								<div class="form-group form-control-default required">
+									<label for="id">Usuario</label>
+									<h:inputText value="#{usuarioAction.usuario.usuario}"
+										class="form-control" id="usuario" placeholder="Usuario"
+										required="true" requiredMessage="Ingrese Usuario" />
+								</div>
+
+								<div class="form-group form-control-default required">
+									<label for="id">Clave</label>
+									<h:inputText value="#{usuarioAction.usuario.clave}"
+										class="form-control" id="clave" placeholder="Clave"
+										required="true" requiredMessage="Ingrese Clave" />
+								</div>
+
+								<div class="form-group form-control-default required">
+									<label for="id">Area</label>
+									<h:inputText value="#{usuarioAction.usuario.area}"
+										class="form-control" id="area" placeholder="Area"
+										required="true" requiredMessage="Ingrese Area" />
+								</div>
+
+
+								<div class="form-group form-control-default required">
+									<label for="descripcion">Estado</label>
+
+									<h:selectOneMenu value="#{usuarioAction.usuario.estado}">
+										<f:selectItem itemLabel="AC" itemValue="0" />
+										<f:selectItem itemLabel="DE" itemValue="1" />
+									</h:selectOneMenu>
+								</div>
+
+								<p:commandButton value="Enviar" ajax="false"
+									action="#{usuarioAction.insertaUsuario}" />
+								<p:commandButton value="Cancelar" ajax="false"
+									action="#{generalAction.salir}" />
+
+
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+

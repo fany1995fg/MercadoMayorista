@@ -1,0 +1,9 @@
+<% 
+	response.sendRedirect("./ui/login.jsf");
+    //response.sendRedirect("./ui/lista_persona_p1.jsf");
+    //response.sendRedirect("./ui/consultafacturas.jsf");
+    //response.sendRedirect("./ui/lista_persona_detallecomentario.jsf");
+    //response.sendRedirect("./ui/new_persona.jsf");
+    //response.sendRedirect("./ui/lista_personapruebapublicacion.jsf");
+    return;
+    %>

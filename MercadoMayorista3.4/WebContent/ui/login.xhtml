@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+
+	<h:head>
+        <f:facet name="first">
+			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+			<title>Mercado Mayorista</title>
+        </f:facet>
+        <link type="text/css" href="#{request.contextPath}/css/vendor/all.css" rel="stylesheet" />
+		<link type="text/css" href="#{request.contextPath}/css/app/app.css" rel="stylesheet" />
+
+		<ui:insert name="head"></ui:insert>
+	</h:head>
+
+	<h:body class="login">
+	  <div id="content">
+	    <div class="container-fluid">
+	      <div class="lock-container">
+	        <h1>Mercado Mayorista</h1>
+	        <h:form>
+	        <div class="panel panel-default text-center">
+	          <br/>
+	          <i class="fa fa-user-secret fa-5x"></i>
+	          <div class="panel-body">
+	          
+		        
+	          	
+				<h:inputText id="correo" value="#{login.usuario}" required="true" requiredMessage="Ingrese su correo" styleClass="form-control"/>
+				<p:watermark for="correo" value="Correo" id="wtCorreo" />
+				
+				<h:inputSecret id="contrasena" value="#{login.clave}" required="true" requiredMessage="Ingrese su clave" styleClass="form-control"/>
+				<p:watermark for="contrasena" value="Ingrese Clave" id="wtClave" />
+				
+				<p:commandButton value="Login" ajax="false"  styleClass="btn btn-sm btn-primary"
+										 action="#{login.verificarUsuario}" >			
+				</p:commandButton>
+				<h:commandLink action="#{login.OlvideClave}" styleClass="forgot-password">Olvide mi Clave</h:commandLink>
+				<!--  <h:commandLink href="#{request.contextPath}/ui/new_socio.jsf" styleClass="forgot-password">Registrarse</h:commandLink>
+				-->
+				<a href="#{request.contextPath}/ui/registroUsuario.jsf">Registrarse</a>
+				
+	          </div>
+	        </div>
+	        <p:messages id="msgs"/>  
+	        </h:form>
+	      </div>
+	    </div>
+	  </div>
+	  
+	    <!-- Footer -->
+		<footer class="footer">
+		  <strong>Mercado Mayorista</strong> v1.0.0 Copyright 2015
+		</footer>
+		<!-- // Footer -->
+	</h:body>
+
+  <script src="#{request.contextPath}/js/vendor/all.js"></script>
+  <script src="#{request.contextPath}/js/app/app.js"></script>
+
+
+</f:view>
+</html>

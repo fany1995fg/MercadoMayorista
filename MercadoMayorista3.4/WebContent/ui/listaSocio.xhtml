@@ -1,0 +1,92 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/uiConMenu.xhtml">
+    
+	<ui:define name="content">
+	<div class="page-section">
+	<div class="row">
+                <div>
+				<h1 class="page-section-heading">Registro de Socio</h1>
+				<p:messages id="msgs"/> 
+				
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                    
+						<h:form id="frmlista_socio">
+							
+							<p:dataTable var="aux"
+							 value="#{socioAction.listaSocio}"
+							 binding="#{socioAction.dttSocios}">
+											 
+									<f:facet name="header">
+										Lista Socios
+									</f:facet>
+									
+									<p:column headerText="Id">
+										<h:outputText value="#{aux.idsocio}" />
+									</p:column>
+									<p:column headerText="Dni">
+										<h:outputText value="#{aux.dni}" />
+									</p:column>
+									<p:column headerText="Nombre">
+										<h:outputText value="#{aux.nombres}" />
+									</p:column>
+									<p:column headerText="Apellidos">
+										<h:outputText value="#{aux.apellido}" />
+									</p:column>
+									<p:column headerText="Estado Civil">
+										<h:outputText value="#{aux.soc_estadocivil}" />
+									</p:column>
+									<p:column headerText="CONYUGE">
+										<h:outputText value="#{aux.soc_conyuge}" />
+									</p:column>
+									<p:column headerText="Correo">
+										<h:outputText value="#{aux.correo}" />
+									</p:column>
+									<p:column headerText="Fec. Nac.">
+										<h:outputText value="#{aux.fechaNacimiento}"/>
+									</p:column>
+									
+									<p:column style="width:32px;text-align: center">
+									  	<p:graphicImage value="/#{aux.imagen}" height="96" width="96" />
+								  	</p:column>
+		
+									<p:column headerText="-">
+										<h:commandLink id="id1" 
+												 action="#{socioAction.eliminaSocio}"
+												 ajax="false">
+												 <h:graphicImage value="/images/user-man-delete.png"/>
+										</h:commandLink>
+									</p:column>
+									<p:column headerText="-">
+										<p:commandLink id="id2" 
+												 action="#{socioAction.buscaSocio}"
+												 ajax="false" >
+												<h:graphicImage  value="/images/user-man-edit.png"/> 
+										 </p:commandLink>
+									</p:column>
+									
+									<p:column headerText="-">
+										<h:commandButton value="Ver Establecimientos"
+											action="#{socioAction.listaestablecimientoxid}" >
+
+										</h:commandButton>
+									</p:column>		
+
+								</p:dataTable>
+								
+								
+									
+						</h:form>
+                   
+                    </div>
+                  </div>
+		  </div>
+     </div>
+    	 </div>
+	</ui:define>
+</ui:composition>
+

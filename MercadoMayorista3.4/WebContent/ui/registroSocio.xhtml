@@ -1,0 +1,117 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/uiConMenu.xhtml">
+
+
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<f:metadata>
+		<f:viewParam name="fechaNacimiento"
+			value="#{socioAction.socio.fechaNacimiento}"
+			converter="javax.faces.DateTime" />
+	</f:metadata>
+
+	<ui:define name="content">
+		<div class="page-section">
+			<div class="row">
+				<div class="col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
+					<h4 class="page-section-heading">Registro de Socio</h4>
+					<p:messages id="msgs" />
+					<div class="panel panel-default">
+						<div class="panel-body">
+
+							<h:form enctype="multipart/form-data">
+
+
+								<div class="form-group form-control-default required">
+									<label for="nombre">DNI</label>
+									<h:inputText value="#{socioAction.socio.dni}"
+										class="form-control" id="nombre" placeholder="DNI"
+										required="true" requiredMessage="Ingrese Dni" />
+
+								</div>
+
+								<div class="form-group form-control-default required">
+									<label for="nombres">Nombre</label>
+									<h:inputText value="#{socioAction.socio.nombres}"
+										class="form-control" id="nombres" placeholder="Nombres"
+										required="true" requiredMessage="Ingrese Nombre" />
+
+
+								</div>
+
+								<div class="form-group form-control-default required">
+									<label for="apellidos">Apellidos</label>
+									<h:inputText value="#{socioAction.socio.apellido}"
+										class="form-control" id="apellido" placeholder="Apellidos"
+										required="true" requiredMessage="Ingrese Apellido" />
+								</div>
+
+								<div class="form-group form-control-default required">
+									<label for="descripcion">Sexo</label>
+
+									<h:selectOneMenu value="#{socioAction.socio.soc_sexo}">
+										<f:selectItem itemLabel="Masculino" itemValue="0" />
+										<f:selectItem itemLabel="Femenino" itemValue="1" />
+									</h:selectOneMenu>
+								</div>
+
+			
+
+								<div class="form-group form-control-default required">
+									<label for="apellidos">Conyuge</label>
+									<h:inputText value="#{socioAction.socio.soc_conyuge}"
+										class="form-control" id="conyuge" placeholder="Conyuge"
+										required="true" requiredMessage="Ingrese Conyuge" />
+								</div>
+
+
+								<div class="form-group form-control-default required">
+									<label for="apellidos">Correo</label>
+									<h:inputText value="#{socioAction.socio.correo}"
+										class="form-control" id="correo" placeholder="Correo"
+										required="true" requiredMessage="Ingrese E-mail"
+										validatorMessage="#{socioAction.socio.correo} Formato Inválido">
+										<f:validateRegex
+											pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+									</h:inputText>
+
+
+								</div>
+
+								<div class="form-group form-control-default required">
+									<label for="fec_nac">Fecha de Nacimiento</label>
+									<p:calendar value="#{socioAction.socio.fechaNacimiento}"
+										pattern="yyyy-MM-dd" />
+								</div>
+
+
+								<div class="form-group form-control-default required">
+									<label for="foto">Foto</label>
+
+									<p:fileUpload value="#{socioAction.foto}" mode="simple" />
+								</div>
+
+								<p:commandButton value="Enviar" ajax="false"
+									action="#{socioAction.insertaSocio}" />
+								<p:commandButton value="Cancelar" ajax="false"
+									action="#{generalAction.salir}" />
+
+
+
+
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+

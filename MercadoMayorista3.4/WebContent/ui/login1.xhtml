@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/uiSinMenuLogin.xhtml">
+    
+    <ui:define name="head">
+
+    </ui:define>
+
+	<ui:define name="content">
+
+	<p:growl id="growl" showDetail="true" life="3000" /> 
+
+	<h:form>  
+		
+		<p:messages id="msje"/> 
+		
+        <h:panelGrid columns="2" cellpadding="5" styleClass="alineacionColumna">  
+            <h:outputLabel for="username" value="Username:" />  
+            <p:inputText value="#{login.usuario}"   
+                    id="username" required="true" label="username" />  
+              
+            <h:outputLabel for="password" value="Password:" />  
+            <h:inputSecret value="#{login.clave}"   
+                    id="password" required="true" label="password" />  
+              
+  
+            <p:commandButton id="loginButton" value="Login" update=":growl"   
+                    action="#{login.verificarUsuario}" 	 ajax="false" />  
+        </h:panelGrid>  
+          
+    </h:form>  
+  
+	</ui:define>
+</ui:composition>
