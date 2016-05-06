@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Tomar Foto Socio</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl id="growlMensagensId" />
+		<h:panelGrid columns="2">
+			<p:panel id="panelFotoId" header="Foto"
+				style="width: 360px;height: 300px;">
+				<p:imageCropper value="#{photoController.imagenRecortada}"
+					initialCoords="225,75,300,125" id="imageCropperFotoId"
+					rendered="#{photoController.pantallaImagenCapturada}"
+					image="#{pageContext.servletContext.contextPath}/imagenes/tmp/#{photoController.foto}" />
+			</p:panel>
+			<p:panel id="panelFotoRecortadaId" header="Foto Recortada"
+				style="width: 360px;height: 300px;">
+				<p:graphicImage
+					value="#{pageContext.servletContext.contextPath}/imagenes/tmp/#{photoController.fotoRecortada}"
+					cache="false" />
+			</p:panel>
+			<h:column>
+				<p:commandLink id="webcamId" onclick="dialogCamera.show();">
+					<p:graphicImage
+						value="#{pageContext.servletContext.contextPath}/imagenes/webcam.png"
+						style="border: none;" />
+				</p:commandLink>
+				<p:commandLink id="recortarId"
+					action="#{photoController.recortar()}"
+					process="@this imageCropperFotoId"
+					update="growlMensagensId panelFotoRecortadaId"
+					style="margin-left: 10px;"
+					disabled="#{not photoController.pantallaImagenCapturada}">
+					<p:graphicImage
+						value="#{pageContext.servletContext.contextPath}/imagenes/tesoura.png"
+						style="border: none;" />
+				</p:commandLink>
+			</h:column>
+		</h:panelGrid>
+		<p:dialog widgetVar="dialogCamera" resizable="false"
+			showHeader="false" width="360" height="300">
+			<p:resources />
+			<h:panelGrid>
+				<p:photoCam widgetVar="photoCam"
+					update="growlMensagensId panelFotoId recortarId"
+					listener="#{photoController.oncapture}" />
+				<h:panelGrid columns="2">
+					<p:commandButton value="Capturar" type="button"
+						onclick="photoCam.capture();" />
+					<p:commandButton value="Cerrar" type="button"
+						onclick="dialogCamera.hide();" />
+				</h:panelGrid>
+			</h:panelGrid>
+		</p:dialog>
+		<p:ajaxStatus onstart="dialogAguarde.show()"
+			oncomplete="dialogAguarde.hide();" />
+		<p:dialog widgetVar="dialogAguarde" showHeader="false"
+			resizable="false" closable="false">
+                Espere...
+            </p:dialog>
+		<p:tooltip for="webcamId" value="Visualizar Webcam" />
+		<p:tooltip for="recortarId" value="Recortar Imagen" />
+
+
+		<p:commandButton value="Retornar" onclick="history.back()" icon="" />
+	</h:form>
+</h:body>
+</html>
+

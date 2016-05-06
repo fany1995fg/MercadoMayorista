@@ -1,4 +1,4 @@
-package model;
+/*package model;
 
 import java.util.List;
 
@@ -49,3 +49,4 @@ public class DistritoModel {
 
 
 
+*/

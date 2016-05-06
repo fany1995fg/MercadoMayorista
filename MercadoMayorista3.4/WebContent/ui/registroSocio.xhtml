@@ -62,7 +62,7 @@
 									</h:selectOneMenu>
 								</div>
 
-			
+
 
 								<div class="form-group form-control-default required">
 									<label for="apellidos">Conyuge</label>
@@ -88,23 +88,21 @@
 								<div class="form-group form-control-default required">
 									<label for="fec_nac">Fecha de Nacimiento</label>
 									<p:calendar value="#{socioAction.socio.fechaNacimiento}"
-										pattern="yyyy-MM-dd" />
+										pattern="yyyy-mm-dd" />
 								</div>
-
 
 								<div class="form-group form-control-default required">
 									<label for="foto">Foto</label>
+							<a href="#{request.contextPath}/ui/photoCam.jsf">Tomar Foto</a>
 
 									<p:fileUpload value="#{socioAction.foto}" mode="simple" />
 								</div>
-
+								
 								<p:commandButton value="Enviar" ajax="false"
-									action="#{socioAction.insertaSocio}" />
+									action="#{socioAction.insertaSocio}" icon="" />
+
 								<p:commandButton value="Cancelar" ajax="false"
-									action="#{generalAction.salir}" />
-
-
-
+									action="#{generalAction.salir}" icon="" />
 
 							</h:form>
 						</div>

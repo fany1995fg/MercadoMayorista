@@ -1,4 +1,4 @@
-package entidades;
+/*package entidades;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -46,3 +46,4 @@ public class Distrito implements Serializable{
 	
 	
 }
+*/
