@@ -6,8 +6,10 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>Tomar Foto Socio</title>
+	<link type="text/css" href="#{request.contextPath}/css/app/photocam.css" rel="stylesheet" />
 </h:head>
 <h:body>
+<div class="tomaFoto">
 	<h:form>
 		<p:growl id="growlMensagensId" />
 		<h:panelGrid columns="2">
@@ -41,9 +43,10 @@
 						style="border: none;" />
 				</p:commandLink>
 			</h:column>
+			<p:commandButton value="Retornar" onclick="history.back()" icon="" />
 		</h:panelGrid>
 		<p:dialog widgetVar="dialogCamera" resizable="false"
-			showHeader="false" width="360" height="300">
+			showHeader="false" width="360" height="335">
 			<p:resources />
 			<h:panelGrid>
 				<p:photoCam widgetVar="photoCam"
@@ -53,22 +56,21 @@
 					<p:commandButton value="Capturar" type="button"
 						onclick="photoCam.capture();" />
 					<p:commandButton value="Cerrar" type="button"
-						onclick="dialogCamera.hide();" />
-				</h:panelGrid>
-			</h:panelGrid>
+						onclick="dialogCamera.hide();" />						
+				</h:panelGrid>				
+			</h:panelGrid>			
 		</p:dialog>
 		<p:ajaxStatus onstart="dialogAguarde.show()"
 			oncomplete="dialogAguarde.hide();" />
 		<p:dialog widgetVar="dialogAguarde" showHeader="false"
 			resizable="false" closable="false">
                 Espere...
-            </p:dialog>
+            </p:dialog>           
+            
 		<p:tooltip for="webcamId" value="Visualizar Webcam" />
 		<p:tooltip for="recortarId" value="Recortar Imagen" />
-
-
-		<p:commandButton value="Retornar" onclick="history.back()" icon="" />
+		
 	</h:form>
+	</div>
 </h:body>
 </html>
-
