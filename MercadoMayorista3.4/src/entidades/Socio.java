@@ -71,7 +71,12 @@ public class Socio implements Serializable {
 	
 	@Transient
 	private String imagen;
-
+	
+	
+	@Column(length=100000)
+	private byte[] firma;
+	
+	
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
@@ -96,7 +101,31 @@ public class Socio implements Serializable {
 	}
 
  
-	
+	@Transient
+	private String imagenFirma;
+
+
+	public String getImagenFirma() {
+		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+		String realPath=(String) servletContext.getRealPath("/"); 
+		 
+		try {
+			String rutaFile = realPath+"\\"+ dni +".jpg";
+			imagenFirma= dni +".jpg";
+			FileOutputStream fileOuputStream = new FileOutputStream(rutaFile);
+			fileOuputStream.write(firma);
+			fileOuputStream.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return imagenFirma;
+	}
+
+	public void setImagenFirma(String imagenFirma) {
+		this.imagenFirma = imagenFirma;
+	}
+
 	public byte[] getFoto() {
 		return foto;
 	}
@@ -105,6 +134,14 @@ public class Socio implements Serializable {
 		this.foto = foto;
 	}
 	
+	public byte[] getFirma() {
+		return firma;
+	}
+
+	public void setFirma(byte[] firma) {
+		this.firma = firma;
+	}
+
 	public Socio() {
 	}
 

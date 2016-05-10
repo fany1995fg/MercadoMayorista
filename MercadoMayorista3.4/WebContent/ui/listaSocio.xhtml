@@ -24,10 +24,6 @@
 									<f:facet name="header">
 										Lista Socios
 									</f:facet>
-									
-									<p:column headerText="Id">
-										<h:outputText value="#{aux.idsocio}" />
-									</p:column>
 									<p:column headerText="Dni">
 										<h:outputText value="#{aux.dni}" />
 									</p:column>
@@ -37,10 +33,13 @@
 									<p:column headerText="Apellidos">
 										<h:outputText value="#{aux.apellido}" />
 									</p:column>
+									<p:column headerText="Sexo">
+										<h:outputText value="#{aux.soc_sexo}" />
+									</p:column>
 									<p:column headerText="Estado Civil">
 										<h:outputText value="#{aux.soc_estadocivil}" />
 									</p:column>
-									<p:column headerText="CONYUGE">
+									<p:column headerText="Conyuge">
 										<h:outputText value="#{aux.soc_conyuge}" />
 									</p:column>
 									<p:column headerText="Correo">
@@ -52,6 +51,10 @@
 									
 									<p:column style="width:32px;text-align: center">
 									  	<p:graphicImage value="/#{aux.imagen}" height="96" width="96" />
+								  	</p:column>
+								  	
+								  	<p:column style="width:32px;text-align: center">
+									  	<p:graphicImage value="/#{aux.imagenFirma}" height="96" width="96" />
 								  	</p:column>
 		
 									<p:column headerText="-">

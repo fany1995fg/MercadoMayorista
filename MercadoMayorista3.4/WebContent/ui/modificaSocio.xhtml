@@ -4,62 +4,109 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	template="../templates/uiConMenu.xhtml">
+
+
+
 	<ui:define name="content">
-    <link type="text/css" href="#{request.contextPath}/css/app/modificar.css" rel="stylesheet" />
-	<div class="formulario">
-		<h:form enctype="multipart/form-data">
-			
-				<p:messages id="msgs"/>  
-					       
-				<h:panelGrid  columns="2" styleClass="alineacionColumna" >
-				
-			    	<h:outputText value="DNI" />
-					<h:inputText value="#{socioAction.socio.dni}" />
-					
-					<h:outputText value="NOMBRE" />
-					<h:inputText value="#{socioAction.socio.nombres}" />
+		<div class="page-section">
+			<div class="row">
+				<div class="col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
+					<h4 class="page-section-heading">Registro de Socio</h4>
+					<p:messages id="msgs" />
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h:form enctype="multipart/form-data">
 
-					<h:outputText value="APELLIDO" />
-					<h:inputText value="#{socioAction.socio.apellido}" />
-					
-					
-				
-					<h:outputText value="Sexo" />
-					<h:selectOneMenu value="#{socioAction.socio.soc_sexo}" >
-						<f:selectItem itemLabel="Masculino" itemValue="MASCULINO" />  
-						<f:selectItem itemLabel="Femenino" itemValue="FEMENINO" />
-		                
- 					</h:selectOneMenu>									
-			
+								<div class="form-group form-control-default required">
+									<label for="nombre">DNI</label>
+									<h:inputText value="#{socioAction.socio.dni}"
+										class="form-control" id="dni" placeholder="DNI"
+										required="true" requiredMessage="Ingrese Dni" />
+
+								</div>
+
+								<div class="form-group form-control-default required">
+									<label for="nombres">Nombre</label>
+									<h:inputText value="#{socioAction.socio.nombres}"
+										class="form-control" id="nombres" placeholder="Nombres"
+										required="true" requiredMessage="Ingrese Nombre" />
+								</div>
+
+								<div class="form-group form-control-default required">
+									<label for="apellidos">Apellidos</label>
+									<h:inputText value="#{socioAction.socio.apellido}"
+										class="form-control" id="apellido" placeholder="Apellidos"
+										required="true" requiredMessage="Ingrese Apellido" />
+								</div>
+
+								<div class="form-group form-control-default required">
+									<label for="sexo">Sexo</label>
+
+									<h:selectOneMenu value="#{socioAction.socio.soc_sexo}">
+										<f:selectItem itemLabel="Masculino" itemValue="0" />
+										<f:selectItem itemLabel="Femenino" itemValue="1" />
+									</h:selectOneMenu>
+								</div>
+								
+								<div class="form-group form-control-default required">
+									<label for="soc_estadocivil">Estado Civil</label>
+									<h:selectOneMenu value="#{socioAction.socio.soc_estadocivil}">
+										<f:selectItem itemLabel="Soltero(a)" itemValue="0" />
+										<f:selectItem itemLabel="Casado(a)" itemValue="1" />
+										<f:selectItem itemLabel="Viudo(a)" itemValue="2" />
+										<f:selectItem itemLabel="Divorciado(a)" itemValue="3" />
+									</h:selectOneMenu>
+								</div>
+
+								<div class="form-group form-control-default required">
+									<label for="apellidos">Conyuge</label>
+									<h:inputText value="#{socioAction.socio.soc_conyuge}"
+										class="form-control" id="conyuge" placeholder="Conyuge"
+										required="true" requiredMessage="Ingrese Conyuge" />
+								</div>
 
 
-					<h:outputText value="Estado Civil" />
-					<h:selectOneMenu value="#{socioAction.socio.soc_estadocivil}" >
-						<f:selectItem itemLabel="CASADO(A)" itemValue="CASADO" />  
-						<f:selectItem itemLabel="SOLTERO(A)" itemValue="SOLTERO" />
-						<f:selectItem itemLabel="CONVIVIENTE(A)" itemValue="CONVIVIENTE" />
-		                
- 					</h:selectOneMenu>		
- 					
- 					<h:outputText value="CONYUGE" />
-					<h:inputText value="#{socioAction.socio.soc_conyuge}" />
- 										
+								<div class="form-group form-control-default required">
+									<label for="apellidos">Correo</label>
+									<h:inputText value="#{socioAction.socio.correo}"
+										class="form-control" id="correo" placeholder="Correo"
+										required="true" requiredMessage="Ingrese E-mail"
+										validatorMessage="#{socioAction.socio.correo} Formato Inválido">
+										<f:validateRegex
+											pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+									</h:inputText>
+								</div>
 
-					<h:outputText value="CORREO" />
-					<h:inputText value="#{socioAction.socio.correo}" />
+								<div class="form-group form-control-default required">
+									<label for="fec_nac">Fecha de Nacimiento</label>
+									<p:calendar value="#{socioAction.socio.fechaNacimiento}"
+										pattern="yyyy-mm-dd" />
+								</div>
 
-					<h:outputText value="FECHA NACIMIENTO" />
-					<p:calendar value="#{socioAction.socio.fechaNacimiento}"  pattern="yyyy-mm-dd"/>
 
-					<h:outputText value="FOTO" />
-					<p:fileUpload value="#{socioAction.foto}"  mode="simple"/>
+								<div class="form-group form-control-default required">
+									<label for="foto">Foto</label> <a
+										href="#{request.contextPath}/ui/photoCam.jsf">Tomar Foto</a>
 
-					<p:commandButton value="Enviar" ajax="false" 
-										action="#{socioAction.modificaSocio}" />
-							</h:panelGrid>
-				
-					<h:inputHidden value="#{socioAction.socio.idsocio}"/>	
-					</h:form>
+									<p:fileUpload value="#{socioAction.foto}" mode="simple" />
+								</div>
+
+								<div class="form-group form-control-default required">
+									<label for="firma">Firma</label> <a
+										href="#{request.contextPath}/firma.html">Firmar</a>
+
+									<p:fileUpload value="#{socioAction.firma}" mode="simple" />
+								</div>
+
+								<p:commandButton value="Enviar" ajax="false"
+									action="#{socioAction.modificaSocio}" />
+
+								<h:inputHidden value="#{socioAction.socio.idsocio}" />
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</ui:define>
 </ui:composition>
